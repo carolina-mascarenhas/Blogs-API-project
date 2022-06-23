@@ -23,4 +23,11 @@ routes.get('/', middlewares.tokenValidation, async (_req, res) => {
   res.status(200).json(getUsers);
 });
 
+routes.get('/:id', middlewares.tokenValidation, async (req, res) => {
+  const { id } = req.params;
+
+  const users = await userServices.getUsersByPk(id);
+  res.status(200).json(users);
+});
+
 module.exports = routes;
