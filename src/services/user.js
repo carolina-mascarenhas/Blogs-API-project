@@ -2,10 +2,8 @@ const { User } = require('../database/models');
 
 const createUser = async ({ displayName, email, password, image }) => {
   const check = await User.findAll({
-    attributes: ['email'],
     where: { email },
   });
-  // console.log('console check:', check);
 
   if (check.length === 0) {
     const { dataValues } = await User.create({ displayName, email, password, image });
@@ -22,6 +20,11 @@ const createUser = async ({ displayName, email, password, image }) => {
   throw Object.assign(error);
 };
 
+const getUsers = () => User.findAll({
+  attributes: { exclude: ['password'] },
+});
+
 module.exports = {
   createUser,
+  getUsers,
 };

@@ -9,7 +9,6 @@ const routes = express.Router();
 
 routes.post('/', middlewares.newUserValidation, async (req, res) => {
   const user = await userServices.createUser(req.body);
-  // console.log('console de user:', user);
 
   const jwtConfig = {
     algorithm: 'HS256',
@@ -17,6 +16,11 @@ routes.post('/', middlewares.newUserValidation, async (req, res) => {
 
   const token = jwt.sign({ data: user }, secret, jwtConfig);
   res.status(201).json({ token });
+});
+
+routes.get('/', middlewares.tokenValidation, async (_req, res) => {
+  const getUsers = await userServices.getUsers();
+  res.status(200).json(getUsers);
 });
 
 module.exports = routes;
