@@ -13,4 +13,9 @@ router.post('/', middlewares.newCategoryValidation, async (req, res) => {
   res.status(201).json(newCategorie);
 });
 
+router.get('/', async (req, res) => {
+  const categories = await categoriesService.getCategories();
+  res.status(200).json(categories);
+});
+
 module.exports = router;
