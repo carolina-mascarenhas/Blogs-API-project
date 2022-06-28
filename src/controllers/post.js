@@ -32,4 +32,9 @@ router.post('/', middlewares.newPostValidation, async (req, res) => {
   res.status(201).json(posts);
 });
 
+router.get('/', middlewares.tokenValidation, async (req, res) => {
+  const posts = await postServices.getPosts();
+  res.status(200).json(posts);
+});
+
 module.exports = router;
