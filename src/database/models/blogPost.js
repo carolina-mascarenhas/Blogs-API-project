@@ -6,6 +6,9 @@ const blogPostSchema = (sequelize, DataTypes) => {
     userId: { type: DataTypes.INTEGER, foreignKey: true },
     published: { type: 'TIMESTAMP' },
     updated: { type: 'TIMESTAMP' }
+  },
+  {
+    timestamps: false
   });
 
   blogPostTable.associate = (model) => {
