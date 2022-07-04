@@ -1,15 +1,23 @@
 // const Sequelize = require('sequelize');
-const { BlogPost, User, Category } = require('../database/models');
+const { BlogPost, User, Category, PostCategory } = require('../database/models');
 // const config = require('../database/config/config');
 
 // const sequelize = new Sequelize(config.development);
 
-const createPost = async ({ title, content, _categoryIds }, id) => {
-  const test = BlogPost.create({
+const createPost = async ({ title, content, categoryIds }, id) => {
+  const test = await BlogPost.create({
     title,
     content,
     userId: id,
   });
+
+  categoryIds.map((idd) => PostCategory.create({
+    postId: test.dataValues.id,
+    categoryId: idd,
+  }));
+
+  // console.log(test);
+
   return test;
 };
 

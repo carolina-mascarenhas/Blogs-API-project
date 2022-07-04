@@ -21,10 +21,10 @@ router.post('/', middlewares.newPostValidation, async (req, res) => {
   categoryIds.map((ids) => arr.push(ids === id));
 
   const promissesResolved = await Promise.all(arr);
-  console.log('console de promisseall:', promissesResolved);
+  // console.log('console de promisseall:', promissesResolved);
 
   const test = promissesResolved.some((bolean) => bolean === true);
-  console.log('finalmente:', test);
+  // console.log('finalmente:', test);
 
   if (test === false) return res.status(400).json({ message: '"categoryIds" not found' });
 
