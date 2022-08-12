@@ -5,9 +5,9 @@
 ## Orientações
 
 1. Clone o repositório
-  * `git clone https://github.com/tryber/sd-018-a-project-blogs-api.git`.
+  * `git clone git@github.com:carolina-mascarenhas/Blogs-API-project.git`.
   * Entre na pasta do repositório que você acabou de clonar:
-    * `cd sd-018-a-project-blogs-api`
+    * `cd Blogs-API-project`
     
 2. Instale as dependências
   * `npm install`
